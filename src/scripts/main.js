@@ -1,4 +1,5 @@
 'use strict';
+const form = document.querySelector('form');
 
 function waitFor(element, eventName) {
   if (element) {
@@ -6,18 +7,16 @@ function waitFor(element, eventName) {
       element.addEventListener(eventName, () => {
         const string = `It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`;
 
-        console.log(eventName, element.id);
         resolve(string);
       });
     });
   }
 }
+const messageDiv = document.createElement('div');
+
+messageDiv.classList.add('message');
 
 const printMessage = (message) => {
-  const form = document.querySelector('form');
-  const messageDiv = document.createElement('div');
-
-  messageDiv.classList.add('message');
   messageDiv.innerText = message;
   form.append(messageDiv);
 };
